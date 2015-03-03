@@ -1,0 +1,68 @@
+<link rel="import" href="bower_components/polymer/polymer.html" />
+<link rel="import" href="tab-page.html" />
+
+<polymer-element name="tab-list">
+	<template>
+		<style>
+			:host {
+				display: block;
+			}
+			#buttons > button {
+				border: solid 1px #ccc;
+				background-color: transparent;
+			}
+		</style>
+		<div id="buttons"></div>
+		<content></content>
+	</template>
+	<script>
+		Polymer({
+			ready: function() {
+				this._buildButtons();
+				this.select(0);
+			},
+
+			_buildButtons: function() {
+				var elButtonList = this.elButtonList = this.shadowRoot.querySelector('#buttons');
+
+				var elList = this;
+				var elPages = this.elPages = elList.querySelectorAll('tab-page');
+				for (var i=0, l=elPages.length; i<l; i++) {
+					var elPage = elPages[i];
+					var title = elPage.getAttribute('title');
+
+					var elButton = this._buildButton(title);
+					elButtonList.appendChild(elButton);
+				}
+			},
+
+			_buildButton: function(title) {
+				var el = document.createElement('button');
+				el.innerHTML = title;
+				el.onclick = this.f_onclickButton.bind(this);
+				return el;
+			},
+
+			select: function(index) {
+				if (this.elCurPage) {
+					this.elCurPage.classList.remove('is-visible');
+				}
+				this.elCurPage = this.elPages[index];
+				this.elCurPage.classList.add('is-visible');
+				console.log(this.elCurPage);
+			},
+
+			f_onclickButton: function(event) {
+				var elButton = event.currentTarget;
+				var elButtons = elButton.parentElement.children;
+				var index;
+				for (index = 0, l=elButtons.length; index<l; index++) {
+					if (elButton === elButtons[index]) {
+						break;
+					}
+				}
+				this.select(index);
+			}
+		});
+	</script>
+</polymer-element>

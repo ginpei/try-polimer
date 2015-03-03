@@ -1,0 +1,23 @@
+<link rel="import" href="bower_components/polymer/polymer.html" />
+
+<polymer-element name="tab-page">
+	<template>
+		<style>
+			:host {
+				border: solid 1px #ccc;
+				display: none;
+				margin-top: -1px;
+			}
+			:host(.is-visible) {
+				display: block;
+			}
+		</style>
+		<content></content>
+	</template>
+	<script>
+		Polymer({
+			ready: function() {
+			}
+		});
+	</script>
+</polymer-element>

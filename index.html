@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<script src="bower_components/webcomponentsjs/webcomponents.js"></script>
+		<link rel="import" href="count-button.html">
+		<link rel="import" href="tabs.html">
+		<title>Trying to Polymer</title>
+	</head>
+	<body>
+		<count-button count="{{count}}">
+			<p>Push me!</p>
+			<count-unit>times</count-unit>
+		</count-button>
+		<count-button>NOOOOOOOOOO</count-button>
+
+		<tab-list>
+
+			<tab-page title="1st Tab">
+				<h1>Tab Item 1</h1>
+				<p>This is the first tab.</p>
+			</tab-page>
+
+			<tab-page title="2nd Tab">
+				<h1>Tab Item 2</h1>
+				<p>This is the second tab.</p>
+			</tab-page>
+
+		</tab-list>
+
+	</body>
+</html>

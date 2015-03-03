@@ -1,0 +1,35 @@
+<link rel="import" href="bower_components/polymer/polymer.html" />
+
+<polymer-element name="count-button">
+	<template>
+		<style>
+			button {
+				font-size: 30px;
+			}
+		</style>
+		<button on-click="{{countUp}}">
+			{{count}}<content select="count-unit"></content>
+			/
+			<content></content>
+		</button>
+	</template>
+	<script>
+		Polymer({
+			publish: {
+				count: {
+					value: 0,
+					reflect: true
+				},
+				countUp: function(event, detail, sender) {
+					this.count++;
+				}
+			}
+		});
+
+		// Polymer(Polymer.mixin({
+		// 	onclick: function(event) {
+		// 		console.log(123);
+		// 	}
+		// }));
+	</script>
+</polymer-element>
